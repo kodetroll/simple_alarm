@@ -27,6 +27,6 @@ clean:
 cleanall:
 	rm -f *.o *~ core alarm
 
-install:
+install: alarm
 	install -s alarm /usr/local/sbin
 
