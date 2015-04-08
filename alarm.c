@@ -20,6 +20,7 @@
  *  --debug                Turns ON debugging!
  *  --nodebug              Turns OFF debugging!
  *  --actions              Prints a list of possible actions and exits!
+ *  --now                  Causes program to jump to actions immediately (now)!
  *  --help, -h             Displays help and exits.
  *  --version, -v          Displays version and exits.
  *  --increment, -i <TIME> Sets time increment (in Secs).
@@ -45,10 +46,26 @@
 
 #define DEFAULT_WAVFILE "./test"
 
+enum Actions {
+	ACT_NONE,
+	ACT_PLAY_WAV,	// aplay wavfile
+	ACT_PLAY_BEEP,	// ogg123 /usr/share/sounds/freedesktop/stereo/phone-outgoing-calling.oga
+	ACT_PLAY_BEEPS,	// ogg123 /usr/share/sounds/freedesktop/stereo/phone-outgoing-busy.oga
+	ACT_PLAY_DRIP,	// ogg123 /usr/share/sounds/gnome/default/alerts/drip.ogg
+	ACT_PLAY_SONAR,	// ogg123 /usr/share/sounds/gnome/default/alerts/sonar.ogg
+	ACT_PLAY_GLASS,	// ogg123 /usr/share/sounds/gnome/default/alerts/glass.ogg
+	ACT_PLAY_BELL,	// ogg123 /usr/share/sounds/ubuntu/stereo/bell.ogg
+	ACT_PLAY_POP,	// ogg123 /usr/share/sounds/ubuntu/stereo/message.ogg
+	ACT_PLAY_ERRR,	// ogg123 /usr/share/sounds/freedesktop/stereo/suspend-error.oga
+	ACT_PLAY_RING,	// ogg123 /usr/share/sounds/freedesktop/stereo/phone-incoming-call.oga
+};
+
 static int verbose;
 static int debug;
 static int action;
 static int actions;
+static int now;
+
 char* wavfile;
 
 void usage(char * appname);
@@ -67,6 +84,7 @@ void usage(char * appname)
 	printf("  --debug                Turns ON debugging! \n");
 	printf("  --nodebug              Turns OFF debugging! \n");
 	printf("  --actions              Prints a list of possible actions and exits! \n");
+	printf("  --now                  Causes program to jump to actions immediately (now)! \n");
 	printf("  --help, -h             Displays help and exits. \n");
 	printf("  --version, -v          Displays version and exits. \n");
 	printf("  --increment, -i <TIME> Sets time increment (in Secs). \n");
@@ -81,20 +99,6 @@ void version(void)
 {
 	printf("Version %d.%d\n",VER_MAJOR,VER_MINOR);
 }
-
-enum Actions {
-	ACT_NONE,
-	ACT_PLAY_WAV,	// aplay wavfile
-	ACT_PLAY_BEEP,	// ogg123 /usr/share/sounds/freedesktop/stereo/phone-outgoing-calling.oga
-	ACT_PLAY_BEEPS,	// ogg123 /usr/share/sounds/freedesktop/stereo/phone-outgoing-busy.oga
-	ACT_PLAY_DRIP,	// ogg123 /usr/share/sounds/gnome/default/alerts/drip.ogg
-	ACT_PLAY_SONAR,	// ogg123 /usr/share/sounds/gnome/default/alerts/sonar.ogg
-	ACT_PLAY_GLASS,	// ogg123 /usr/share/sounds/gnome/default/alerts/glass.ogg
-	ACT_PLAY_BELL,	// ogg123 /usr/share/sounds/ubuntu/stereo/bell.ogg
-	ACT_PLAY_POP,	// ogg123 /usr/share/sounds/ubuntu/stereo/message.ogg
-	ACT_PLAY_ERRR,	// ogg123 /usr/share/sounds/freedesktop/stereo/suspend-error.oga
-	ACT_PLAY_RING,	// ogg123 /usr/share/sounds/freedesktop/stereo/phone-incoming-call.oga
-};
 
 void Action(int action)
 {
@@ -243,6 +247,50 @@ char* getActionTypeName(int action)
 
 }
 
+char* getActionName(int action)
+{
+	switch(action)
+	{
+		case ACT_PLAY_WAV :	// aplay wavfile
+			return("PLAY_WAV");
+			break;
+		case ACT_PLAY_BEEP :	// ogg123 /usr/share/sounds/freedesktop/stereo/phone-outgoing-calling.oga
+			return("PLAY_BEEP");
+			break;
+		case ACT_PLAY_BEEPS :	// ogg123 /usr/share/sounds/freedesktop/stereo/phone-outgoing-busy.oga
+			return("PLAY_BEEPS");
+			break;
+		case ACT_PLAY_DRIP :	// ogg123 /usr/share/sounds/gnome/default/alerts/drip.ogg
+			return("PLAY_DRIP");
+			break;
+		case ACT_PLAY_SONAR :	// ogg123 /usr/share/sounds/gnome/default/alerts/sonar.ogg
+			return("PLAY_SONAR");
+			break;
+		case ACT_PLAY_GLASS :	// ogg123 /usr/share/sounds/gnome/default/alerts/glass.ogg
+			return("PLAY_GLASS");
+			break;
+		case ACT_PLAY_BELL :	// ogg123 /usr/share/sounds/ubuntu/stereo/bell.ogg
+			return("PLAY_BELL");
+			break;
+		case ACT_PLAY_POP :	// ogg123 /usr/share/sounds/ubuntu/stereo/message.ogg
+			return("PLAY_POP");
+			break;
+		case ACT_PLAY_ERRR :	// ogg123 /usr/share/sounds/freedesktop/stereo/suspend-error.oga
+			return("PLAY_ERRR");
+			break;
+		case ACT_PLAY_RING :	// ogg123 /usr/share/sounds/freedesktop/stereo/phone-incoming-call.oga
+			return("PLAY_RING");
+			break;
+		case ACT_NONE :
+			return("NONE");
+			break;
+		default :
+			return("UNKNOWN");
+			break;
+	}
+
+}
+
 int main(int argc, char* argv[])
 {
 	long timeout = 5;
@@ -267,6 +315,7 @@ int main(int argc, char* argv[])
 			{"debug",   no_argument,       &debug, 1},
 			{"nodebug", no_argument,       &debug, 0},
 			{"actions", no_argument,      &actions, 1},
+			{"now",     no_argument,          &now, 1},
 			/* These options don’t set a flag.
 			   We distinguish them by their indices. */
 			{"help",       no_argument,       0, 'h'},
@@ -368,6 +417,7 @@ int main(int argc, char* argv[])
 	{
 		printf("action: '%s'\n",getActionTypeName(action));
 		printf("actions: %d\n",actions);
+		printf("now: %d\n",now);
 		printf("t_inc: %ld\n",t_inc);
 		printf("timeout: %ld\n",timeout);
 		printf("wavfile: '%s'\n",wavfile);
@@ -375,12 +425,12 @@ int main(int argc, char* argv[])
 
 	if (actions)
 	{
-		printf("Actions are:\n");
+		printf("Possible actions are: ");
 		for (i=ACT_NONE;i<=ACT_PLAY_RING;i++)
-			printf("%s\n",getActionTypeName(i));
+			printf("%s, ",getActionName(i));
+		printf("\n");
 		exit(0);
 	}
-
 
 	/* Print any remaining command line arguments (not options). */
 	if (optind < argc)
@@ -397,6 +447,9 @@ int main(int argc, char* argv[])
 
 	if (verbose)
 		printf("Starting with %ld Secs Left!\n",timeout);
+
+	if (now)
+		timer = time(NULL);
 
 	do
 	{
