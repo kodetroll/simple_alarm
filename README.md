@@ -69,10 +69,10 @@ command line argument are as follows (Spelling and case are significant):
 
 
 Note: 
-*1) ogg and oga files are played using ogg123.
-*2) wav files using aplay.
-*3) freedesktop sounds are found in: /usr/share/sounds/freedesktop/stereo/
-*4) ubuntu sounds are found in: /usr/share/sounds/ubuntu/stereo/
-*5) gnome sounds are found in: /usr/share/sounds/gnome/default/alerts/
+* 1) ogg and oga files are played using ogg123.
+* 2) wav files using aplay.
+* 3) freedesktop sounds are found in: /usr/share/sounds/freedesktop/stereo/
+* 4) ubuntu sounds are found in: /usr/share/sounds/ubuntu/stereo/
+* 5) gnome sounds are found in: /usr/share/sounds/gnome/default/alerts/
 
   Copyright (C) 2015 KB4OID Labs, A division of Kodetroll Heavy Industries
