@@ -1,0 +1,15 @@
+INSTALL
+=======
+
+Installing:
+-----------
+
+to build (compile): 
+	type 'make' or 'make alarm'
+
+to cleanup: 
+	type 'make clean' to clean .o, 'make cleanall' to clean up all files.
+
+to install: 
+	type 'sudo make install'. It will put the binary in /usr/local/sbin 
+	folder.
