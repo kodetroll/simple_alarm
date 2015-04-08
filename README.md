@@ -35,6 +35,7 @@ Where:
  --debug                Turns ON debugging!
  --nodebug              Turns OFF debugging!
  --actions              Prints a list of possible actions and exits!
+ --now                  Causes program to jump to actions immediately (now)! 
  --help, -h             Displays help and exits.
  --version, -v          Displays version and exits.
  --increment, -i <TIME> Sets time increment (in Secs).
@@ -44,15 +45,16 @@ Where:
 
 e.g. type './alarm -a PLAY_RING -t 15 -i 5 --verbose --debug'
 ```
-This application uses aplay to play wav files and ogg123 to play ogg files.
-These applications must be installed in order for the actions to work.
-To get aplay, install the alsa package, for ogg123, install the vorbis-tools
-package.
+
+Note: This application uses 'aplay' to play wav files and 'ogg123' to play ogg files.
+These applications must be installed in order for actions that play sounds to work.
+To get aplay, install the alsa package, for ogg123, install the vorbis-tools package.
 
 ACTIONS
 -------
 The possible set of actions that may be specified with the --action or -a
 command line argument are as follows (Spelling and case are significant):
+
 * NONE - Takes no action
 * PLAY_WAV   - Plays the specified (or default) wav file using aplay
 * PLAY_BEEP  - Plays phone-outgoing-calling.oga from freedesktop
@@ -65,12 +67,12 @@ command line argument are as follows (Spelling and case are significant):
 * PLAY_ERRR  - Plays suspend-error.oga from freedesktop
 * PLAY_RING  - Plays phone-incoming-call.oga from freedesktop
 
-```
+
 Note: 
-1) ogg and oga files are played using ogg123.
-2) wav files using aplay.
-3) freedesktop sounds are found in: /usr/share/sounds/freedesktop/stereo/
-4) ubuntu sounds are found in: /usr/share/sounds/ubuntu/stereo/
-5) gnome sounds are found in: /usr/share/sounds/gnome/default/alerts/
-```
+*1) ogg and oga files are played using ogg123.
+*2) wav files using aplay.
+*3) freedesktop sounds are found in: /usr/share/sounds/freedesktop/stereo/
+*4) ubuntu sounds are found in: /usr/share/sounds/ubuntu/stereo/
+*5) gnome sounds are found in: /usr/share/sounds/gnome/default/alerts/
+
   Copyright (C) 2015 KB4OID Labs, A division of Kodetroll Heavy Industries
