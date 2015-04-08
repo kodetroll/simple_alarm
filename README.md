@@ -46,9 +46,10 @@ Where:
 e.g. type './alarm -a PLAY_RING -t 15 -i 5 --verbose --debug'
 ```
 
-Note: This application uses 'aplay' to play wav files and 'ogg123' to play ogg files.
-These applications must be installed in order for actions that play sounds to work.
-To get aplay, install the alsa package, for ogg123, install the vorbis-tools package.
+    Note: This application uses 'aplay' to play wav files and 'ogg123' 
+    to play ogg files. These applications must be installed in order 
+    for actions that play sounds to work. To get aplay, install the 
+    alsa package, for ogg123, install the vorbis-tools package.
 
 ACTIONS
 -------
@@ -68,11 +69,11 @@ command line argument are as follows (Spelling and case are significant):
 * PLAY_RING  - Plays phone-incoming-call.oga from freedesktop
 
 
-Note: 
-* 1) ogg and oga files are played using ogg123.
-* 2) wav files using aplay.
-* 3) freedesktop sounds are found in: /usr/share/sounds/freedesktop/stereo/
-* 4) ubuntu sounds are found in: /usr/share/sounds/ubuntu/stereo/
-* 5) gnome sounds are found in: /usr/share/sounds/gnome/default/alerts/
+Notes: 
+ * 1) ogg and oga files are played using ogg123. 
+ * 2) wav files are played using aplay.
+ * 3) freedesktop sounds are found in: /usr/share/sounds/freedesktop/stereo
+ * 4) ubuntu sounds are found in: /usr/share/sounds/ubuntu/stereo
+ * 5) gnome sounds are found in: /usr/share/sounds/gnome/default/alerts
 
   Copyright (C) 2015 KB4OID Labs, A division of Kodetroll Heavy Industries
