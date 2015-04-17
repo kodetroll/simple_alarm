@@ -114,31 +114,31 @@ void Action(int action)
 			system(tbuf);
 			break;
 		case ACT_PLAY_BEEP :	// ogg123 /usr/share/sounds/freedesktop/stereo/phone-outgoing-calling.oga
-			system("ogg123 /usr/share/sounds/freedesktop/stereo/phone-outgoing-calling.oga");
+			system("ogg123 -q /usr/share/sounds/freedesktop/stereo/phone-outgoing-calling.oga");
 			break;
 		case ACT_PLAY_BEEPS :	// ogg123 /usr/share/sounds/freedesktop/stereo/phone-outgoing-busy.oga
-			system("ogg123 /usr/share/sounds/freedesktop/stereo/phone-outgoing-busy.oga");
+			system("ogg123 -q /usr/share/sounds/freedesktop/stereo/phone-outgoing-busy.oga");
 			break;
 		case ACT_PLAY_DRIP :	// ogg123 /usr/share/sounds/gnome/default/alerts/drip.ogg
-			system("ogg123 /usr/share/sounds/gnome/default/alerts/drip.ogg");
+			system("ogg123 -q /usr/share/sounds/gnome/default/alerts/drip.ogg");
 			break;
 		case ACT_PLAY_SONAR :	// ogg123 /usr/share/sounds/gnome/default/alerts/sonar.ogg
-			system("ogg123 /usr/share/sounds/gnome/default/alerts/sonar.ogg");
+			system("ogg123 -q /usr/share/sounds/gnome/default/alerts/sonar.ogg");
 			break;
 		case ACT_PLAY_GLASS :	// ogg123 /usr/share/sounds/gnome/default/alerts/glass.ogg
-			system("ogg123 /usr/share/sounds/gnome/default/alerts/glass.ogg");
+			system("ogg123 -q /usr/share/sounds/gnome/default/alerts/glass.ogg");
 			break;
 		case ACT_PLAY_BELL :	// ogg123 /usr/share/sounds/ubuntu/stereo/bell.ogg
-			system("ogg123 /usr/share/sounds/ubuntu/stereo/bell.ogg");
+			system("ogg123 -q /usr/share/sounds/ubuntu/stereo/bell.ogg");
 			break;
 		case ACT_PLAY_POP :	// ogg123 /usr/share/sounds/ubuntu/stereo/message.ogg
-			system("ogg123 /usr/share/sounds/ubuntu/stereo/message.ogg");
+			system("ogg123 -q /usr/share/sounds/ubuntu/stereo/message.ogg");
 			break;
 		case ACT_PLAY_ERRR :	// ogg123 /usr/share/sounds/freedesktop/stereo/suspend-error.oga
-			system("ogg123 /usr/share/sounds/freedesktop/stereo/suspend-error.oga ");
+			system("ogg123 -q /usr/share/sounds/freedesktop/stereo/suspend-error.oga ");
 			break;
 		case ACT_PLAY_RING :	// ogg123 /usr/share/sounds/freedesktop/stereo/phone-incoming-call.oga
-			system("ogg123 /usr/share/sounds/freedesktop/stereo/phone-incoming-call.oga	");
+			system("ogg123 -q /usr/share/sounds/freedesktop/stereo/phone-incoming-call.oga	");
 			break;
 		case ACT_NONE :
 		default :
