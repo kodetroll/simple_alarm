@@ -2,6 +2,8 @@
 # 
 # Simple makefile for simple alarm
 #
+INSTALL=install
+WHERE=~/bin
 #IDIR =../include
 CC=gcc
 #CFLAGS=-I$(IDIR)
@@ -28,5 +30,5 @@ cleanall:
 	rm -f *.o *~ core alarm
 
 install: alarm
-	install -s alarm /usr/local/sbin
+	$(INSTALL) -s alarm $(WHERE)
 
