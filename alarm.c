@@ -67,16 +67,24 @@ static int actions;
 static int now;
 
 char* wavfile;
+char* appname;
 
-void usage(char * appname);
+void cpright(void);
+void usage(void);
 void version(void);
 void Action(int action);
 int getActionTypeFromName(char* atype);
 int getActionTypeFromLabel(char* atype);
 char* getActionTypeName(int action);
 
-void usage(char * appname)
+void cpright(void)
 {
+	printf("%s (C) 2015-2017 KB4OID Labs, A division of Kodetroll Heavy Industries\n",appname);
+}
+
+void usage(void)
+{
+	cpright();
 	printf("%s <OPTIONS>\n",appname);
 	printf(" Where:\n");
 	printf("  --verbose              Turns ON verbose mode! \n");
@@ -97,6 +105,7 @@ void usage(char * appname)
 
 void version(void)
 {
+	cpright();
 	printf("Version %d.%d\n",VER_MAJOR,VER_MINOR);
 }
 
@@ -300,6 +309,8 @@ int main(int argc, char* argv[])
 
 	long t_inc = 10;
 
+	appname = strdup(argv[0]);
+
 	verbose = 0;
 	debug = 0;
 	action = ACT_NONE;
@@ -351,7 +362,7 @@ int main(int argc, char* argv[])
 			case 'h':	// show help and exit
 				if (debug)
 					puts ("option -h\n");
-				usage(argv[0]);
+				usage();
 				exit(0);
 				break;
 
@@ -402,6 +413,9 @@ int main(int argc, char* argv[])
 				abort ();
 		}
 	}
+
+	if (verbose)
+		cpright();
 
 	/* Instead of reporting ‘--verbose’
 	   and ‘--brief’ as they are encountered,
