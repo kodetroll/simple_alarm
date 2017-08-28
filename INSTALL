@@ -11,5 +11,4 @@ to cleanup:
 	type 'make clean' to clean .o, 'make cleanall' to clean up all files.
 
 to install: 
-	type 'sudo make install'. It will put the binary in /usr/local/sbin 
-	folder.
+	type 'make install'. It will put the binary in your ~/bin folder.
