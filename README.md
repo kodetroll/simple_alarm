@@ -20,6 +20,7 @@ See the LICENSE file for more information on the license
 * Date Created: April 2015
 * Date Previous: None
 * Date Last: April 8 2015
+* Date Last: August 28 2017
 
 INSTALLING
 ----------
